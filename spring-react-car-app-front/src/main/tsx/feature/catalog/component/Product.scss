@@ -1,0 +1,40 @@
+
+
+
+.product {
+  animation: fade 1s;
+}
+
+
+.product-title {
+
+  height: 4rem;
+
+  h2 {
+    font-size: 1.2rem;
+  }
+  h3 {
+    font-size: 0.8rem;
+  }
+
+
+
+}
+
+.product-content {
+  padding: 0.5rem;
+
+
+}
+
+.product-link {
+  float: right;
+}
+
+
+
+
+@keyframes fade {
+  from {opacity: 0}
+  to {opacity: 1}
+}

@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/*
+$roboto-font-path: "~mdbreact/dist/font/roboto/" !default;
+$image-path: "~mdbreact/dist/img" !default;
+
+ FONT AWESOME (to optimize : split fontawesome import)
+$fa-css-prefix: fa;
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts" !default;
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
+$fa-font-path: "../../../node_modules/@fortawesome/fontawesome-free/webfonts" !default;
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+*/
+
+
+
+//$fa-css-prefix: fa;
+//$fa-font-path: "~@fortawesome/fontawesome-free/webfonts" !default;
+//@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+//@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "breakpoint";
+@import "colors";
+
+$link-color: red !default;

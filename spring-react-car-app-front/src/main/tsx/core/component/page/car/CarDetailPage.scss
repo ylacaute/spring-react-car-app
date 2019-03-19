@@ -1,0 +1,32 @@
+@import "sass/core/_main.scss";
+
+.car-detail-page {
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .car-gallery {
+    margin: auto;
+    opacity: 0;
+    width: 90%;
+
+    @include breakpoint(tablet) {
+      width: 80%;
+    }
+    @include breakpoint(desktop) {
+      width: 70%;
+    }
+    @include breakpoint(desktop-ultra-wide) {
+      width: 60%;
+    }
+
+    &.car-gallery-visible {
+      opacity: 1;
+      animation: fade 1s;
+    }
+
+  }
+
+}

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src/main/tsx",
+    "outDir": "./target/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "ESNext",
+    "target": "es5",
+    "jsx": "react",
+    "lib": ["es6", "dom"],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

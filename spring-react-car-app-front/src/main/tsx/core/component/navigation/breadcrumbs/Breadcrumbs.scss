@@ -1,0 +1,18 @@
+@import "sass/core/_main.scss";
+
+.breadcrumbs {
+  margin-bottom: 15px;
+
+  a.breadcrumbs-item {
+    color: $link-color;
+  }
+
+  .breadcrumbs-item, .breadcrumbs-separator {
+    font-size: 150%;
+  }
+
+  .breadcrumbs-separator:before, .breadcrumbs-separator:after {
+    content: "\00a0"
+  }
+
+}

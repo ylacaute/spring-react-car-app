@@ -1,0 +1,26 @@
+meta: aaa
+version: 0.1
+
+brands:
+ - name: altaya
+ - name: delprado
+ - name: eligor
+ - name: norev
+
+products:
+  - brand: Altaya
+    model: AUSTRO DEIMLER ADR Bergmester 1932
+  - brand: Altaya
+    model: Citroen 11 Taxi
+  - brand: Delprado
+    model: Acmat 6x6 CCFL 1985 (1-57)
+  - brand: Delprado
+    model: CCF Brimont 6000 1984 (1-64)
+  - brand: Eligor
+    model: Alpine A610
+  - brand: Eligor
+    model: Autocar Citroen Type G 1953 No 41 Hachette
+  - brand: Norev
+    model: Cadillac IXTEE 2003 Sixteen
+  - brand: Norev
+    model: Aixam-mega Loisir Michelin

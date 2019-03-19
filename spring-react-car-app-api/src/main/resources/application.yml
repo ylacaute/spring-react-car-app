@@ -1,0 +1,7 @@
+
+app:
+  static: file:/home/epi/sgoinfre/static
+
+spring:
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,${app.static}

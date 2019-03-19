@@ -1,0 +1,18 @@
+
+.caroussel-btn {
+    border: 0;
+    background: none;
+    outline: none;
+    border-radius: 100%;
+    width: 67px;
+    height: 67px;
+    font-size: 300%;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+    &.disabled {
+        cursor: not-allowed;
+    }
+}
+
