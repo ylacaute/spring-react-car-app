@@ -1,6 +1,6 @@
 
 app:
-  static: file:/home/epi/sgoinfre/static
+  static: file:/static
 
 spring:
   resources:
