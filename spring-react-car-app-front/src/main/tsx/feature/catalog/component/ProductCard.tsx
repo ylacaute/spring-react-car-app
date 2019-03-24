@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "core/component/image/Image";
 import Card from "core/component/layout/card/Card";
-import {DEFAULT_SCALE, ProductModel} from "feature/catalog/model/ProductModel";
+import {DEFAULT_SCALE, getProductFeaturedImagePath, ProductModel} from "feature/catalog/model/ProductModel";
 import {PulseLoader} from "halogenium";
 import {ProductLink} from "./ProductLink";
 import "./ProductCard.scss";
@@ -13,20 +13,17 @@ interface Props {
 
 class ProductCard extends React.Component<Props> {
 
-    private getImagePath() {
-        const {box, brand, model} = this.props.product;
-        return `assets/VOITURES/${brand}/${box}/${model}/featured.jpg`;
-    }
-
     render() {
         const {className, product} = this.props;
         const {brand, name} = this.props.product;
         const scale = this.props.product.scale ? this.props.product.scale : DEFAULT_SCALE;
+        const imgPath = getProductFeaturedImagePath(product);
+
         return (
             <Card className={`product ${className}`} >
                 <ProductLink product={product}>
                     <figure className="product-thumb-image">
-                        <Image imagePath={this.getImagePath()} />
+                        <Image imagePath={imgPath} noImagePath="/img/no-image-car.png" />
                     </figure>
                 </ProductLink>
                 <div className="product-content">

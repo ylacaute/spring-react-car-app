@@ -10,7 +10,8 @@
     "build": "webpack",
     "prebuild:prod": "npm run clean",
     "build:prod": "webpack -p",
-    "start": "webpack-dev-server --host 0.0.0.0 --port 3001 --mode development --open"
+    "start": "webpack-dev-server --host 0.0.0.0 --port 3001 --mode development --open",
+    "demo": "webpack-dev-server --host 0.0.0.0 --port 3001 --mode development --open --env.externalStatic=demo/static"
   },
   "dependencies": {
     "@types/reactstrap": "^6.4.3",

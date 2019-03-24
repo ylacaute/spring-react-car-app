@@ -30,7 +30,7 @@ class CarDetailPage extends React.Component<Props, State> {
 
     private getImagePath(index: string) {
         const {box, brand, model} = this.state.product;
-        return `assets/VOITURES/${brand}/${box}/${model}/${index}.jpg`;
+        return `cars/${brand}/${box}/${model}/${index}.jpg`;
     }
 
     private handleFirstImageLoaded() {

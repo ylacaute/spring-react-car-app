@@ -1,20 +1,17 @@
 
+// Include only what is needed
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts" !default;
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
+// We are free to expose icon build with something else than FA !
 .icon {
-  /*
   @extend .fa;
 
   &.next { @extend .fa-angle-right }
   &.prev { @extend .fa-angle-left  }
   &.bars { @extend .fa-bars }
-*/
 
-}
-
-
-
-// ICON SIZES
-
-.icon {
   &.large {
     font-size: 300%;
   }

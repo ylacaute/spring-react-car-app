@@ -1,9 +1,10 @@
 import {normalizeStr} from "core/util/Toolkit";
-import {CatalogFilterModel} from "./CatalogFilterModel";
 
-const DEFAULT_SCALE = "1/43";
+export const BASE_PRODUCT_URL = "/cars";
 
-interface ProductModel {
+export const DEFAULT_SCALE = "1/43";
+
+export interface ProductModel {
 
     // Brand (ALTAYA, SOLIDO...)
     brand: string;
@@ -27,7 +28,7 @@ interface ProductModel {
     nbImg: number;
 }
 
-const SCALES = [
+export const SCALES = [
     "1/43",
     "1/50",
     "1/57",
@@ -36,7 +37,7 @@ const SCALES = [
     "1/87"
 ];
 
-const createProduct = (brand, box, model, scale, nbImg) => {
+export const createProduct = (brand, box, model, scale, nbImg) => {
     const modelScale = " (" + scale.replace("/", "-") + ")";
     const name = model.replace(modelScale, "");
     //console.log("normalized Name : ", normalizeStr(name));
@@ -54,12 +55,12 @@ const createProduct = (brand, box, model, scale, nbImg) => {
     };
 };
 
-const toURL = (product: ProductModel): string => {
+export const toURL = (product: ProductModel): string => {
     const {brand, model, box, scale, nbImg} = product;
     return `/car?brand=${brand}&model=${model}&box=${box}&scale=${scale}&nbImg=${nbImg}`;
 };
 
-const fromURL = (location: any): ProductModel => {
+export const fromURL = (location: any): ProductModel => {
     const params = new URLSearchParams(location.search);
     return createProduct(
         params.get("brand"),
@@ -69,12 +70,7 @@ const fromURL = (location: any): ProductModel => {
         Number.parseInt(params.get("nbImg"), 10));
 };
 
-export {
-    SCALES,
-    DEFAULT_SCALE,
-    ProductModel,
-    fromURL,
-    toURL,
-    createProduct
+export const getProductFeaturedImagePath = (product: ProductModel): string => {
+    const {box, brand, model} = product;
+    return `${BASE_PRODUCT_URL}/${brand}/${box}/${model}/featured.jpg`;
 };
-

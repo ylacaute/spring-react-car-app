@@ -1,4 +1,5 @@
 
+
 @mixin shineRightToLeftEffect() {
   position: relative;
   &:after {
@@ -17,21 +18,3 @@
     transition: all 0.3s ease-out;
   }
 }
-
-@mixin zoomEffect($childSelector) {
-  overflow: hidden;
-  #{$childSelector} {
-    transition: all .5s;
-  }
-  &:hover #{$childSelector},
-  &:focus #{$childSelector} {
-    transform: scale(1.2);
-  }
-}
-
-@keyframes fade {
-  from {opacity: 0}
-  to {opacity: 1}
-}
-
-

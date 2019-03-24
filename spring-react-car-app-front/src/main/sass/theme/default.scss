@@ -130,15 +130,28 @@ $close-text-shadow:                 none !default;
 
 
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
-@import "sass/core/_main.scss";
 
 
 
-@import "sass/core/_effect.scss";
+// THE THEME WILL START FROM HERE LATER AND SASS VAR ABOVE WILL BE REMOVED
 
+@import "sass/core/effect/fade.scss";
+@import "sass/core/effect/zoom.scss";
+
+body {
+  background: #ededed;
+}
+
+// Zoom on product image hover
 .product-thumb-image {
   @include zoomEffect("img");
 }
+
+// Fade in when the product is loaded
+.product {
+  animation: fade 1s;
+}
+
 
 
 :root {

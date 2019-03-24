@@ -1,23 +1,16 @@
 import React from "react";
-//
-
-// import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
-// import "@fortawesome/fontawesome-free/scss/solid.scss";
-
-//import "style/core/main.scss";
 import "./Icon.scss";
 
+type IconName = "next"
+    | "prev"
+    | "bars"
+
 interface Props {
-    name: string;
+    name: IconName;
 }
 
-class Icon extends React.Component<Props> {
-    render() {
-        const {name}  = this.props;
-        return (
-            <i className={`icon ${name}`} />
-        );
-    }
-}
+const Icon = (props:Props) => (
+    <i className={`icon ${props.name}`} />
+);
 
 export default Icon;

@@ -1,0 +1,12 @@
+
+@mixin zoomEffect($childSelector) {
+  overflow: hidden;
+  #{$childSelector} {
+    transition: all .5s;
+    transform: scale(1.05); // Avoid 1px bug on Chrome
+  }
+  &:hover #{$childSelector},
+  &:focus #{$childSelector} {
+    transform: scale(1.2);
+  }
+}

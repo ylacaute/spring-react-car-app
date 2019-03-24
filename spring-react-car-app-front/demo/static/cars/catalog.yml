@@ -1,0 +1,40 @@
+version: 0.1
+brands:
+  - name: DELPRADO
+  - name: ELIGOR
+  - name: NOREV
+  - name: ALTAYA
+products:
+  - model: CCF Brimont 6000 1984 (1-64)
+    box: CAISSE 01
+    nbImg: 9
+    brand: DELPRADO
+  - model: Acmat 6x6 CCFL 1985 (1-57)
+    box: CAISSE 01
+    nbImg: 9
+    brand: DELPRADO
+  - model: Autocar Citroen Type G 1953 No 41 Hachette
+    box: CAISSE 01
+    nbImg: 9
+    brand: ELIGOR
+  - model: Alpine A610
+    box: CAISSE 01
+    nbImg: 9
+    brand: ELIGOR
+  - model: Aixam-mega Loisir Michelin
+    box: CAISSE 01
+    nbImg: 18
+    brand: NOREV
+  - model: Cadillac IXTEE 2003 Sixteen
+    box: CAISSE 01
+    nbImg: 10
+    brand: NOREV
+  - model: Citroen 11 Taxi
+    box: CAISSE 01
+    nbImg: 9
+    brand: ALTAYA
+  - model: AUSTRO DEIMLER ADR Bergmester 1932
+    box: CAISSE 01
+    nbImg: 9
+    brand: ALTAYA
+

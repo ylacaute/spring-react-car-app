@@ -1,6 +1,6 @@
 import {CatalogModel} from "feature/catalog/model/CatalogModel";
-import {ProductModel, SCALES, createProduct, DEFAULT_SCALE} from "feature/catalog/model/ProductModel";
-import fetch from "isomorphic-fetch"; // FIXME replace by cross-fetch ?
+import {ProductModel, SCALES, createProduct, DEFAULT_SCALE, BASE_PRODUCT_URL} from "feature/catalog/model/ProductModel";
+import fetch from "isomorphic-fetch";
 import * as YAML from "js-yaml";
 
 const fetchLogger = (responseText: string) => {
@@ -31,7 +31,7 @@ const transformCatalog = (catalog: CatalogModel): CatalogModel => {
 };
 
 export function fetchProducts(): Promise<CatalogModel> {
-    return fetch("assets/VOITURES/catalog.yml")
+    return fetch(BASE_PRODUCT_URL + "/catalog.yml")
         .then((res: Response) => res.text())
         .then(fetchLogger)
         .then((res: string) => YAML.load(res) as CatalogModel)

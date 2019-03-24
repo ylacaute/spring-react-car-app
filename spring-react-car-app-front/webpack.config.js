@@ -7,14 +7,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const resolve = (dirName) => path.resolve(__dirname, dirName);
 const dispKeys = (msg, object) => Object.keys(object).forEach(key =>
-    console.log(chalk.blue(`${msg} '${key}' : ${object[key]}`)));
+    console.log(chalk.blue(`${msg} '${key}': ${object[key]}`)));
 
 const Paths = {
     src: resolve("src"),
     tsx: resolve("src/main/tsx"),
     template: resolve("src/main/resources/template"),
     static: resolve("src/main/resources/static"),
-    localStatic: resolve("/home/epi/sgoinfre/static"), // external static files (cars images)
+    externalStatic: resolve("/home/epi/sgoinfre/static"), // external static files (cars images)
     style: {
         sassDir: resolve("src/main/sass"),
         defaultTheme: resolve("src/main/sass/theme/default.scss"),
@@ -25,11 +25,15 @@ const Paths = {
 
 module.exports = function(env) {
 
-    const Options = {
+    // The external static directory is override for the demo
+    if (env && env.externalStatic) {
+        Paths.externalStatic = resolve(env.externalStatic);
+    }
 
+    const Options = {
         analyzeBundle: env && env.analyze === "true",
     };
-    dispKeys("User build option", Options);
+    dispKeys("User build path", Paths);
     const cfg = {
 
         // Disable many optimization options
@@ -176,7 +180,7 @@ module.exports = function(env) {
             })
         ]);
         cfg.devServer = {
-            contentBase: [Paths.static, Paths.localStatic],
+            contentBase: [Paths.static, Paths.externalStatic],
             // Allow to refresh routed pages
             historyApiFallback: true,
             publicPath: '/'
