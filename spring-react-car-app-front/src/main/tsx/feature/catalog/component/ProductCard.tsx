@@ -1,19 +1,17 @@
-import React, {ReactNode} from "react";
+import React from "react";
 import Image from "core/component/image/Image";
 import Card from "core/component/layout/card/Card";
-import {ProductModel, DEFAULT_SCALE, toURL} from "feature/catalog/model/ProductModel";
+import {DEFAULT_SCALE, ProductModel} from "feature/catalog/model/ProductModel";
 import {PulseLoader} from "halogenium";
-import {Link} from "react-router-dom";
-
-import "./Product.scss";
 import {ProductLink} from "./ProductLink";
+import "./ProductCard.scss";
 
 interface Props {
     className?: string;
     product: ProductModel;
 }
 
-class Product extends React.Component<Props> {
+class ProductCard extends React.Component<Props> {
 
     private getImagePath() {
         const {box, brand, model} = this.props.product;
@@ -27,10 +25,10 @@ class Product extends React.Component<Props> {
         return (
             <Card className={`product ${className}`} >
                 <ProductLink product={product}>
-                    <Image imagePath={this.getImagePath()} />
+                    <figure className="product-thumb-image">
+                        <Image imagePath={this.getImagePath()} />
+                    </figure>
                 </ProductLink>
-
-
                 <div className="product-content">
                     <div className="product-title">
                         <h2 >{name}</h2>
@@ -45,4 +43,4 @@ class Product extends React.Component<Props> {
     }
 }
 
-export default Product;
+export default ProductCard;

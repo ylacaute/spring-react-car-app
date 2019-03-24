@@ -2,7 +2,7 @@ import React from "react";
 import {PulseLoader} from "halogenium";
 import Select from "react-select/lib/Creatable";
 import {CatalogFilterModel, CatalogFilterOption} from "../model/CatalogFilterModel";
-import "./Product.scss";
+import "./ProductCard.scss";
 
 /**
  * Default option to display for the user

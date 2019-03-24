@@ -2,7 +2,7 @@ import Mosaic from "core/component/layout/mosaic/Mosaic";
 import MosaicItem from "core/component/layout/mosaic/MosaicItem";
 import {ProductModel} from "feature/catalog/model/ProductModel";
 import React from "react";
-import Product from "./Product";
+import ProductCard from "./ProductCard";
 
 interface Props {
     products: ProductModel[];
@@ -14,7 +14,7 @@ class Catalog extends React.Component<Props> {
         return products
             .map((p: ProductModel) => (
                 <MosaicItem key={"mosaic-item" + p.brand + p.model}>
-                    <Product
+                    <ProductCard
                         key={p.brand + p.model}
                         product={p}
                     />

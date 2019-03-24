@@ -15,7 +15,6 @@ class Image extends React.Component<Props> {
     private placeholder = (
         <div className="placeholder">
             <PulseLoader className="loader" color="#fefefe" size="32px" margin="4px"/>
-
         </div>
     );
 

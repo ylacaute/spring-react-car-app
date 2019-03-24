@@ -132,6 +132,15 @@ $close-text-shadow:                 none !default;
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 @import "sass/core/_main.scss";
 
+
+
+@import "sass/core/_effect.scss";
+
+.product-thumb-image {
+  @include zoomEffect("img");
+}
+
+
 :root {
   --main-bg-color: #0F0;
 }
