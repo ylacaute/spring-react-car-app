@@ -1,18 +1,30 @@
 
-.product-title {
-  height: 4rem;
-  h2 {
-    font-size: 1.2rem;
-  }
-  h3 {
-    font-size: 0.8rem;
-  }
-}
+.product {
 
-.product-content {
-  padding: 0.5rem;
-}
+  .product-title {
+    height: 4.5rem;
+    .product-name {
+      font-size: 1.2rem;
+    }
+    .product-brand {
+      font-size: 0.8rem;
+    }
+  }
 
-.product-link {
-  float: right;
+  .product-thumb-image {
+    margin-bottom: 0 !important;
+  }
+
+  .product-content {
+    padding: 0.5rem;
+  }
+
+  footer {
+    position: relative;
+    bottom: 0;
+
+    .product-link {
+      float: right;
+    }
+  }
 }

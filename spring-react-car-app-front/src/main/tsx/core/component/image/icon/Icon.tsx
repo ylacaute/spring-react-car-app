@@ -4,6 +4,7 @@ import "./Icon.scss";
 type IconName = "next"
     | "prev"
     | "bars"
+    | "box"
 
 interface Props {
     name: IconName;

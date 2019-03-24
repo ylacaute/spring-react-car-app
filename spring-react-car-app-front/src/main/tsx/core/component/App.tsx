@@ -3,16 +3,10 @@ import AppState from "core/state/AppState";
 import React from "react";
 import {connect} from "react-redux";
 import {Route, Switch, withRouter} from "react-router-dom";
-import HomePage from "./page/home/HomePage";
-import ContactPage from "./page/contact";
 import {CatalogFilterModel, createFilterFromURL} from "../../feature/catalog/model/CatalogFilterModel";
-import {changeFilter, fetchCatalog, fetchMoreProducts} from "../../feature/catalog/action/CatalogAction";
-import {removeScrollListener} from "../util/Toolkit";
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {changeFilter} from "../../feature/catalog/action/CatalogAction";
 
 //import "./App.scss";
-//import "style/theme/default.scss";
 
 interface Props {
     className?: string;

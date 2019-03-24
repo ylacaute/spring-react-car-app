@@ -11,6 +11,7 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts" !default;
   &.next { @extend .fa-angle-right }
   &.prev { @extend .fa-angle-left  }
   &.bars { @extend .fa-bars }
+  &.box { @extend .fa-archive }
 
   &.large {
     font-size: 300%;

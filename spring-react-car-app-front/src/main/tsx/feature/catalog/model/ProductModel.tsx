@@ -52,6 +52,7 @@ export const createProduct = (brand, box, model, scale, nbImg) => {
             + normalizeStr(model).toLowerCase() + " "
             + normalizeStr(scale).toLowerCase() + " "
             + normalizeStr(name).toLowerCase() + " "
+            + normalizeStr(box).toLowerCase() + " "
     };
 };
 
