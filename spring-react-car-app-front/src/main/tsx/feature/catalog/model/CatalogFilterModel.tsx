@@ -18,25 +18,6 @@ export interface CatalogFilterOption {
     value: string;
 }
 
-
-export const filterEquals = (a: CatalogFilterModel, b: CatalogFilterModel): boolean => {
-    if (a === b) return true;
-    if (a == null || b == null) return false;
-    if (a.options.length != b.options.length) return false;
-
-    // If you don't care about the order of the elements inside
-    // the array, you should sort both arrays here.
-    // Please note that calling sort on an array will modify that array.
-    // you might want to clone your array first.
-
-    for (let i = 0; i < a.options.length; ++i) {
-        console.log("a.options[i].value : ", a.options[i].value);
-        console.log("b.options[i].value : ", b.options[i].value);
-        if (a.options[i].value !== b.options[i].value) return false;
-    }
-    return true;
-};
-
 /**
  * Return true is the product must appears
  */
@@ -61,7 +42,7 @@ export const filterToURL = (filter: CatalogFilterModel): string => {
 
 export const createFilterFromURL = (): CatalogFilterModel => {
     const queryParams: string = window.location.search;
-    if (!queryParams) {
+    if (!queryParams || !queryParams.includes("filter")) {
         return {
             options: []
         }

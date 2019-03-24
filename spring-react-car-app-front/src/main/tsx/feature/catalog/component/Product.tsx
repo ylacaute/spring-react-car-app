@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import Image from "core/component/image/Image";
 import Card from "core/component/layout/card/Card";
 import {ProductModel, DEFAULT_SCALE, toURL} from "feature/catalog/model/ProductModel";
@@ -6,6 +6,7 @@ import {PulseLoader} from "halogenium";
 import {Link} from "react-router-dom";
 
 import "./Product.scss";
+import {ProductLink} from "./ProductLink";
 
 interface Props {
     className?: string;
@@ -20,23 +21,24 @@ class Product extends React.Component<Props> {
     }
 
     render() {
-        const {className} = this.props;
+        const {className, product} = this.props;
         const {brand, name} = this.props.product;
         const scale = this.props.product.scale ? this.props.product.scale : DEFAULT_SCALE;
         return (
             <Card className={`product ${className}`} >
-                <Image imagePath={this.getImagePath()} />
+                <ProductLink product={product}>
+                    <Image imagePath={this.getImagePath()} />
+                </ProductLink>
+
+
                 <div className="product-content">
                     <div className="product-title">
                         <h2 >{name}</h2>
                         <h3>{brand} - {scale}</h3>
                     </div>
-                    <Link
-                        className="product-link"
-                        to={toURL(this.props.product)}
-                    >
+                    <ProductLink product={product}>
                         Voir le détail
-                    </Link>
+                    </ProductLink>
                 </div>
             </Card>
         );
