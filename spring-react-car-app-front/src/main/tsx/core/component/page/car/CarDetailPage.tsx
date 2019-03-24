@@ -1,12 +1,12 @@
-import Image from "core/component/image/Image";
-import Card from "core/component/layout/card/Card";
-import Caroussel from "core/component/layout/caroussel";
+import Card from "core/component/layout/card";
 import Header from "core/component/layout/header";
-import {ProductModel, fromURL} from "feature/catalog/model/ProductModel";
+import {fromURL, getProductImagePath, ProductModel} from "feature/catalog/model/ProductModel";
 import React from "react";
 import Helmet from "react-helmet";
+import {ImageCarouselSlide, ImageCarousel} from "core/component/image/carousel";
 import "./CarDetailPage.scss";
 
+// location and match properties come from React-Router
 interface Props {
     location: any;
     match: any;
@@ -14,7 +14,7 @@ interface Props {
 
 interface State {
     product: ProductModel;
-    carousselLoaded: boolean;
+    carouselLoaded: boolean;
 }
 
 class CarDetailPage extends React.Component<Props, State> {
@@ -23,22 +23,16 @@ class CarDetailPage extends React.Component<Props, State> {
         super(props);
         this.state = {
             product: fromURL(this.props.location),
-            carousselLoaded: false
+            carouselLoaded: false
         };
         this.handleFirstImageLoaded = this.handleFirstImageLoaded.bind(this);
     }
 
-    private getImagePath(index: string) {
-        const {box, brand, model} = this.state.product;
-        return `cars/${brand}/${box}/${model}/${index}.jpg`;
-    }
-
     private handleFirstImageLoaded() {
-        window.dispatchEvent(new Event("resize"));
         this.setState((state) => {
             return {
                 ...state,
-                carousselLoaded: true
+                carouselLoaded: true
             };
         });
     }
@@ -46,12 +40,14 @@ class CarDetailPage extends React.Component<Props, State> {
     render() {
         const {match, location} = this.props;
         const {brand, name, scale, nbImg} = this.state.product;
-        const {carousselLoaded} = this.state;
-        const visibleClass = carousselLoaded ? "car-gallery-visible" : "";
+        const {carouselLoaded, product} = this.state;
+        const visibleClass = carouselLoaded ? "visible" : "";
+        const slides:ImageCarouselSlide[] = [];
 
-        const imgs = [];
         for (let i = 1; i < nbImg - 1; i++) { // -1 : we don't want info.jpg
-            imgs.push(i);
+            slides.push({
+                imagePath: getProductImagePath(product, i)
+            });
         }
 
         return (
@@ -60,17 +56,14 @@ class CarDetailPage extends React.Component<Props, State> {
                     <title>product Page</title>
                     <meta name="description" content="..." />
                 </Helmet>
-                <div className="car-detail-page">
-                    <Header location={location} match={match}>
-                        <h1>{brand} {name} {scale}</h1>
-                    </Header>
+                <Header location={location} match={match}>
+                    <h1 className="car-detail-page-title">{brand} {name} {scale}</h1>
+                </Header>
+                <article className="car-detail-page">
                     <Card className={`car-gallery ${visibleClass}`}>
-                        <Caroussel>
-                            <Image imagePath={this.getImagePath("featured")} onLoad={this.handleFirstImageLoaded}/>
-                            {imgs.map((i) => <Image key={i} imagePath={this.getImagePath(i)} />)}
-                        </Caroussel>
+                        <ImageCarousel slides={slides} onLoad={this.handleFirstImageLoaded}/>
                     </Card>
-                </div>
+                </article>
             </>
         );
     }

@@ -8,7 +8,7 @@ const fetchLogger = (responseText: string) => {
     return responseText;
 };
 
-const transformProduct = (product: ProductModel): ProductModel => {
+const normalizeProduct = (product: ProductModel): ProductModel => {
     let scale = DEFAULT_SCALE;
     for (const s of SCALES) {
         const matchScale = " (" + s.replace("/", "-") + ")";
@@ -26,7 +26,7 @@ const transformProduct = (product: ProductModel): ProductModel => {
 };
 
 const transformCatalog = (catalog: CatalogModel): CatalogModel => {
-    catalog.products = catalog.products.map(transformProduct);
+    catalog.products = catalog.products.map(normalizeProduct);
     return catalog;
 };
 

@@ -9,6 +9,8 @@ import {CatalogFilterModel, createFilterFromURL} from "../../feature/catalog/mod
 import {changeFilter, fetchCatalog, fetchMoreProducts} from "../../feature/catalog/action/CatalogAction";
 import {removeScrollListener} from "../util/Toolkit";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //import "./App.scss";
 //import "style/theme/default.scss";
 

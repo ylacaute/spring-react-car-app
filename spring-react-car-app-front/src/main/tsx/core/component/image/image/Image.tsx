@@ -6,6 +6,7 @@ import "./Image.scss";
 interface Props {
     imagePath: string;
     noImagePath?: string;
+    altText?: string;
     onLoad?: () => void;
 }
 
@@ -19,7 +20,7 @@ const PlaceHolder = (props: any) => (
 const Image = (props:Props) => (
     <ProgressiveImage src={props.imagePath} placeholder="">
         {(src, loading) => loading ? <PlaceHolder image={props.noImagePath} /> :
-            <img className="img-fluid" src={src} alt="an image" onLoad={props.onLoad}/>}
+            <img className="img-fluid" src={src} alt={props.altText} onLoad={props.onLoad}/>}
     </ProgressiveImage>
 );
 

@@ -1,7 +1,7 @@
 import React from "react";
-import Image from "core/component/image/Image";
+import Image from "core/component/image/image";
 import Card from "core/component/layout/card/Card";
-import {DEFAULT_SCALE, getProductFeaturedImagePath, ProductModel} from "feature/catalog/model/ProductModel";
+import {DEFAULT_SCALE, getProductImagePath, ProductModel} from "feature/catalog/model/ProductModel";
 import {PulseLoader} from "halogenium";
 import {ProductLink} from "./ProductLink";
 import "./ProductCard.scss";
@@ -17,7 +17,7 @@ class ProductCard extends React.Component<Props> {
         const {className, product} = this.props;
         const {brand, name} = this.props.product;
         const scale = this.props.product.scale ? this.props.product.scale : DEFAULT_SCALE;
-        const imgPath = getProductFeaturedImagePath(product);
+        const imgPath = getProductImagePath(product, "featured");
 
         return (
             <Card className={`product ${className}`} >

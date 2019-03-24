@@ -70,7 +70,7 @@ export const fromURL = (location: any): ProductModel => {
         Number.parseInt(params.get("nbImg"), 10));
 };
 
-export const getProductFeaturedImagePath = (product: ProductModel): string => {
+export const getProductImagePath = (product: ProductModel, type: any): string => {
     const {box, brand, model} = product;
-    return `${BASE_PRODUCT_URL}/${brand}/${box}/${model}/featured.jpg`;
+    return `${BASE_PRODUCT_URL}/${brand}/${box}/${model}/${type}.jpg`;
 };

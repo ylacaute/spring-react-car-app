@@ -20,7 +20,6 @@
     "date-fns": "^1.29.0",
     "halogenium": "^2.2.3",
     "isomorphic-fetch": "^2.2.1",
-    "nuka-carousel": "^4.4.3",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-helmet": "^5.2.0",
