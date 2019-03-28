@@ -40,6 +40,7 @@ class CatalogSearchBar extends React.Component<Props> {
 
         return (
             <Select
+                className="catalog-search-box"
                 formatCreateLabel={(value) => `Chercher avec '${value}' ('Entrer' pour valider)`}
                 value={filter.options}
                 isMulti

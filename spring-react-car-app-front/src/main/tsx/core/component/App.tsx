@@ -5,8 +5,7 @@ import {connect} from "react-redux";
 import {Route, Switch, withRouter} from "react-router-dom";
 import {CatalogFilterModel, createFilterFromURL} from "../../feature/catalog/model/CatalogFilterModel";
 import {changeFilter} from "../../feature/catalog/action/CatalogAction";
-
-//import "./App.scss";
+import "./App.scss";
 
 interface Props {
     className?: string;

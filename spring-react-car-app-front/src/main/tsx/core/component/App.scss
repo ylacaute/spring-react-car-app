@@ -1,7 +1,22 @@
 
 
+html {
+  background: var(--main-bg-color);
 
+  body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
 
 .app-title {
   background: violet;
+
+}
+
+a {
+  color: var(--link-color);
+  &:hover {
+    color: var(--link-hover-color);
+  }
 }

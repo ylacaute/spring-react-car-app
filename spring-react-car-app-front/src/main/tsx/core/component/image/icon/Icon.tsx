@@ -5,6 +5,7 @@ type IconName = "next"
     | "prev"
     | "bars"
     | "box"
+    | "topMenuToggler"
 
 interface Props {
     name: IconName;

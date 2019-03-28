@@ -73,7 +73,7 @@ class HomePage extends React.Component<Props> {
                     <meta name="description" content="This is a proof of concept for React SSR" />
                 </Helmet>
                 <Header location={location} match={match}>
-                    <div className="homeHeader">
+                    <div className="home-header-content">
                         <h2>Home page !</h2>
                         <CatalogSearchBar filter={filter} changeFilter={changeFilter}/>
                     </div>

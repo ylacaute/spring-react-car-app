@@ -2,7 +2,6 @@ import TopMenu from "core/component/navigation/topmenu/TopMenu";
 import React from "react";
 import "./PageHeader.scss";
 import cn from 'classnames';
-import Breadcrumbs from "../../navigation/breadcrumbs/Breadcrumbs";
 
 interface Props {
     className: string;

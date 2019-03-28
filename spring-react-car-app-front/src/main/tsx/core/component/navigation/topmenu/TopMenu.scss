@@ -1,0 +1,19 @@
+
+
+.navbar {
+  background-color: var(--top-menu-bg-color);
+
+  .nav-link {
+    color: var(--top-menu-link-color);
+    &:hover {
+      color: var(--top-menu-link-hover-color);
+    }
+  }
+  .navbar-toggler {
+    color: var(--top-menu-toggler-color);
+    &:focus {
+      outline: none;
+    }
+  }
+}
+

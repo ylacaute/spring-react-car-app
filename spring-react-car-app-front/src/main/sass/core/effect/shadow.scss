@@ -1,0 +1,15 @@
+
+
+@mixin barShadow() {
+  &:after {
+    content: '';
+    display: block;
+    position: relative;
+    border-radius: 50% / 7px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.55);
+    height: 2px;
+    width: 100%;
+    top: -2px;
+    z-index: -1;
+  }
+}
