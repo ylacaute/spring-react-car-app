@@ -1,7 +1,28 @@
 
+# https://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/html/common-application-properties.html
+
 app:
   static: file:/static
 
+# 86400 is one day in seconds
 spring:
   resources:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,${app.static}
+    cache:
+      period: 86400
+      cachecontrol:
+        cache-private: false
+        cache-public: true
+        must-revalidate: true
+        s-max-age: 86400s
+        max-age: 86400
+    chain:
+      cache: true
+
+server:
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024

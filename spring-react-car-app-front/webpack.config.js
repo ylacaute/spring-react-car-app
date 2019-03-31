@@ -36,9 +36,6 @@ module.exports = function(env) {
     dispKeys("User build path", Paths);
     const cfg = {
 
-        // Disable many optimization options
-        mode: "development",
-
         // Directory from where Webpack will search entries
         context: Paths.tsx,
 

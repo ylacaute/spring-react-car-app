@@ -40,14 +40,26 @@ mvn install dockerfile:build
 ```
 
 ## Docker
-# Start docker
+### Start docker
 All assets (cars) are supposed to be in /static for this example. As you don't have assets, you CAN'T use docker.
 ```shell
 docker run --rm -i -p 8080:8080 -v /static:/static -t ylacaute/spring-react-car-app-api:latest
 ```
-# Push docker image
+### Push docker image
 You have to login to your docker registry and then do this command:
 ```shell
 mvn dockerfile:push
 ```
+
+# Technical backlog
+-[x] Add gzip and cache
+-[ ] A smaller featured must be used in catalog to improve performance 
+-[ ] Change image format to JPEG 2000, JPEG XR or WebP
+-[ ] 
+
+# Functional backlog
+-[ ] Contact page
+-[ ] About page
+-[ ] Site logo and favicon
+
 
