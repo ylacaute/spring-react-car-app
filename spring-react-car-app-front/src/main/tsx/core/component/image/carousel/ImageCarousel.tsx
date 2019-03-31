@@ -5,7 +5,7 @@ import "./ImageCarousel.scss";
 
 export interface ImageCarouselSlide {
     imagePath: string;
-    altText?: string;
+    alt: string;
     caption?: string;
 }
 
@@ -78,7 +78,7 @@ class ImageCarousel extends React.Component<Props, State> {
                 >
                     <Image
                         imagePath={item.imagePath}
-                        altText={item.altText}
+                        alt={item.alt}
                         onLoad={index == 0 ? this.props.onLoad : ()=>{}}
                     />
                 </CarouselItem>

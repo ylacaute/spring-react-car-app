@@ -24,7 +24,11 @@ class ProductCard extends React.Component<Props> {
             <Card className={`product ${className}`} >
                 <ProductLink product={product}>
                     <figure className="product-thumb-image">
-                        <Image imagePath={imgPath} noImagePath="/img/no-image-car.png" />
+                        <Image
+                            alt={product.model}
+                            imagePath={imgPath}
+                            noImagePath="/img/no-image-car.png"
+                        />
                     </figure>
                 </ProductLink>
                 <div className="product-content">

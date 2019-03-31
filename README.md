@@ -53,9 +53,10 @@ mvn dockerfile:push
 
 # Technical backlog
 -[x] Add gzip and cache
+-[ ] Enable HTTP2
 -[ ] A smaller featured must be used in catalog to improve performance 
 -[ ] Change image format to JPEG 2000, JPEG XR or WebP
--[ ] 
+-[ ] As 97% of bootstrap is not used: change include from .min to scss
 
 # Functional backlog
 -[ ] Contact page

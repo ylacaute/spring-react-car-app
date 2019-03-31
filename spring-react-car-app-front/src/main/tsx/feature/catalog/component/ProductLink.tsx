@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const ProductLink = (props: Props) => (
-    <Link className="product-link" to={toURL(props.product)}>
+    <Link className="product-link" to={toURL(props.product)} aria-label={props.product.model}>
         {props.children}
     </Link>
 );

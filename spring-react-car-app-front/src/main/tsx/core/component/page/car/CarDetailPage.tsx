@@ -43,11 +43,13 @@ class CarDetailPage extends React.Component<Props, State> {
         const {carouselLoaded, product} = this.state;
         const visibleClass = carouselLoaded ? "visible" : "";
         const slides:ImageCarouselSlide[] = [{
-            imagePath: getProductImagePath(product, "featured")
+            imagePath: getProductImagePath(product, "featured"),
+            alt: product.model
         }];
         for (let i = 1; i < nbImg - 1; i++) { // -1 : we don't want info.jpg
             slides.push({
-                imagePath: getProductImagePath(product, i)
+                imagePath: getProductImagePath(product, i),
+                alt: product.model
             });
         }
         return (

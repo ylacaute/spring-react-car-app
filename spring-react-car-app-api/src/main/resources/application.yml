@@ -20,9 +20,13 @@ spring:
       cache: true
 
 server:
-  http2:
-    enabled: true
   compression:
     enabled: true
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
     min-response-size: 1024
+
+  #http2:
+    #enabled: true
+  #ssl:
+    #key-store: "classpath:keystore.jks"
+    #key-password: secret

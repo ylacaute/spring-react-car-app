@@ -1,7 +1,7 @@
 
 
 .search-box__control--is-focused {
-    border-color: hsl(0,0%,80%) !important;
+    border-color: #666 !important;
     box-shadow: none !important;
 }
 .search-box__multi-value__remove {
@@ -10,5 +10,6 @@
 }
 
 .search-box__placeholder {
-    color: hsl(0,0%,80%) !important;
+    font-style: italic;
+    color: #666 !important;
 }
