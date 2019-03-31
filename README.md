@@ -65,6 +65,7 @@ mvn dockerfile:push
 - [ ] Contact page
 - [ ] About page
 - [ ] Site logo and favicon
+- [ ] Home page header not nice on mobile
 - [ ] Many things...
 
 
