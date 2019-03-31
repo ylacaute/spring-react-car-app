@@ -64,6 +64,7 @@ mvn dockerfile:push
 - [ ] Keep the same position on scroll when click back on browser
 - [ ] Contact page
 - [ ] About page
+- [ ] Car detail page (carousel too big)
 - [ ] Site logo and favicon
 - [ ] Home page header not nice on mobile
 - [ ] Many things...
