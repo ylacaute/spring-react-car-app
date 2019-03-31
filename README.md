@@ -58,12 +58,13 @@ mvn dockerfile:push
 - [ ] A smaller featured image must be used in catalog to improve performance 
 - [ ] Change image format to JPEG 2000, JPEG XR or WebP
 - [ ] As 97% of bootstrap is not used: change include from .min to scss
-- [ ] Remove the "micro flash" on image loading
+- [ ] Remove the "micro flash" on image loading (Firefox)
 
 # Functional backlog
 - [ ] Keep the same position on scroll when click back on browser
 - [ ] Contact page
 - [ ] About page
 - [ ] Site logo and favicon
+- [ ] Many things...
 
 
