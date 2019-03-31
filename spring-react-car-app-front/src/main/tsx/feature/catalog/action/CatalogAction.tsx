@@ -27,7 +27,6 @@ export const fetchCatalog = (): CatalogAction => ({
     type: CatalogActionType.CATALOG_FETCH_REQUESTED
 });
 
-
 export const fetchCatalogSuccess = (catalog: CatalogModel): CatalogAction => ({
     type: CatalogActionType.CATALOG_FETCH_SUCCEEDED,
     catalog

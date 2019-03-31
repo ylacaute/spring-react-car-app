@@ -204,7 +204,7 @@ module.exports = function(env) {
     //                 vendor: {
     //                     test: /node_modules/,
     //                     chunks: "initial",
-    //                     name: "vendor",
+    //                     num: "vendor",
     //                     priority: 10,
     //                     enforce: true
     //                 }

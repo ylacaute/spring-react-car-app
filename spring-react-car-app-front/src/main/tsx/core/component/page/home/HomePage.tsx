@@ -7,6 +7,7 @@ import Helmet from "react-helmet";
 import {applyFilter, CatalogFilterModel, createFilterFromURL} from "feature/catalog/model/CatalogFilterModel";
 import CatalogSearchBar from "feature/catalog/component/CatalogSearchBar";
 import "./HomePage.scss";
+import {ProductModel} from "../../../../feature/catalog/model/ProductModel";
 
 
 /**
@@ -25,57 +26,66 @@ interface Props {
 
 class HomePage extends React.Component<Props> {
 
-    historyListener;
-
-    constructor(props) {
-        super(props);
-    }
+    scrollListener;
 
     componentDidMount() {
-        console.log("HomePage: componentDidMount");
-
+        console.log("BoxPage: componentDidMount");
         if (this.props.catalog.products.length <= 0) {
-            console.log("HomePage: fetching catalog");
             this.props.fetchCatalog();
         }
         this.onScrollToEnd = this.onScrollToEnd.bind(this);
-        addScrollListener(this.onScrollToEnd);
-
-        // // On back button, we need to update the filter state, but without pushing a new history entry in browser.
-        // this.historyListener = this.props.history.listen((location, action) => {
-        //     this.props.changeFilter(createFilterFromURL(), false);
-        //     console.log(
-        //         `[${action}] the current URL to ${location.pathname}${location.search}${location.hash}`
-        //     );
-        // });
+        this.scrollListener = addScrollListener(this.onScrollToEnd);
     }
 
     componentWillUnmount() {
-        removeScrollListener(this.onScrollToEnd);
-        //this.historyListener();
+        removeScrollListener(this.scrollListener);
     }
 
     onScrollToEnd() {
         this.props.fetchMoreProducts();
     }
 
+
+    renderFilterInfo(productFilteredCount: number, productCount: number) {
+        let info;
+        if (productCount == 0) {
+            return null;
+        }
+        if (productFilteredCount == productCount) {
+            info = `Aucun filtre sur un total de ${productCount}`;
+        } else if (productFilteredCount == 1) {
+            info = `1 modèle filtré sur un total de ${productCount}`;
+        } else if (productFilteredCount == 0) {
+            info = `Aucun modèle correspond à votre recherche sur un total de ${productCount}`;
+        } else {
+            info = `${productFilteredCount} modèles filtrés sur un total de ${productCount}`;
+        }
+        return <p className="filter-info">{info}</p>;
+    }
+
     render() {
         const {match, location, catalog, changeFilter} = this.props;
         const {displayedProductsCount, filter} = this.props.catalog;
-        const productsToDisplay = catalog.products
-            .filter((p) => applyFilter(p, filter))
+        const productFiltered = catalog.products
+            .filter((p) => applyFilter(p, filter));
+        const productsToDisplay = productFiltered
             .slice(0, displayedProductsCount);
 
         return (
             <>
                 <Helmet>
-                    <title>Home Page</title>
-                    <meta name="description" content="This is a proof of concept for React SSR" />
+                    <title>Voitures miniatures</title>
+                    <meta name="description" content="Rechercher des voitures miniature par model, marque, échelle, nom, etc." />
                 </Helmet>
                 <Header location={location} match={match}>
                     <div className="home-header-content">
-                        <h2>Home page !</h2>
-                        <CatalogSearchBar filter={filter} changeFilter={changeFilter}/>
+                        <h2>Chercher un modèle de voiture miniature</h2>
+                        <CatalogSearchBar
+                            brands={catalog.brands}
+                            filter={filter}
+                            changeFilter={changeFilter}
+                        />
+                        {this.renderFilterInfo(productFiltered.length, catalog.products.length)}
                     </div>
                 </Header>
                 <article>
@@ -87,3 +97,4 @@ class HomePage extends React.Component<Props> {
 }
 
 export default HomePage;
+

@@ -1,15 +1,15 @@
 {
-  "name": "react-ssr",
+  "name": "spring-react-car-app",
   "version": "1.0.0",
-  "description": "React Redux SSR PWA Typescript Boilerplate",
+  "description": "Spring react car app",
   "main": "webpack.config.js",
   "scripts": {
     "check": "npm ls --depth 0",
     "clean": "rimraf target",
     "analyze": "webpack --env.platform=client --env.analyze=true",
     "build": "webpack",
-    "prebuild:prod": "npm run clean",
-    "build:prod": "webpack -p",
+    "prepackage": "npm run clean",
+    "package": "webpack -p",
     "start": "webpack-dev-server --host 0.0.0.0 --port 3001 --mode development --open",
     "demo": "webpack-dev-server --host 0.0.0.0 --port 3001 --mode development --open --env.externalStatic=demo/static"
   },

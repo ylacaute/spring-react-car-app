@@ -9,10 +9,10 @@ export interface ProductModel {
     // Brand (ALTAYA, SOLIDO...)
     brand: string;
 
-    // Directory name of the car
+    // Directory num of the car
     model: string;
 
-    // Real name of the car (without scale)
+    // Real num of the car (without scale)
     name: string;
 
     // All information to match research without special characters('é' should match 'e' or 'é')
@@ -21,7 +21,7 @@ export interface ProductModel {
     // Scale (1/43, 1/50...)
     scale: string;
 
-    // Box where car is put
+    // Box where car is put (box number)
     box: string;
 
     // Images count to display for the car
@@ -37,10 +37,13 @@ export const SCALES = [
     "1/87"
 ];
 
-export const createProduct = (brand, box, model, scale, nbImg) => {
+export const createProduct = (brand, model, box, scale, nbImg): ProductModel => {
     const modelScale = " (" + scale.replace("/", "-") + ")";
     const name = model.replace(modelScale, "");
-    //console.log("normalized Name : ", normalizeStr(name));
+
+    if (parseInt(box) < 2) {
+        box = "0" + parseInt(box);
+    }
     return {
         brand,
         model,
@@ -52,7 +55,7 @@ export const createProduct = (brand, box, model, scale, nbImg) => {
             + normalizeStr(model).toLowerCase() + " "
             + normalizeStr(scale).toLowerCase() + " "
             + normalizeStr(name).toLowerCase() + " "
-            + normalizeStr(box).toLowerCase() + " "
+            + box
     };
 };
 
@@ -65,8 +68,8 @@ export const fromURL = (location: any): ProductModel => {
     const params = new URLSearchParams(location.search);
     return createProduct(
         params.get("brand"),
-        params.get("box"),
         params.get("model").replace("_", " "),
+        params.get("box"),
         params.get("scale"),
         Number.parseInt(params.get("nbImg"), 10));
 };

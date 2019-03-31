@@ -1,0 +1,14 @@
+
+
+.search-box__control--is-focused {
+    border-color: hsl(0,0%,80%) !important;
+    box-shadow: none !important;
+}
+.search-box__multi-value__remove {
+    background-color: transparent !important;
+    color: var(--link-hover-color);
+}
+
+.search-box__placeholder {
+    color: hsl(0,0%,80%) !important;
+}

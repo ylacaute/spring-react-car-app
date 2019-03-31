@@ -20,9 +20,9 @@ export interface SessionAction {
     type: string;
 }
 
-export const documentLoaded = (): KernelAction => ({
+export const applicationReady = (): KernelAction => ({
     type: KernelActionType.UPDATE_KERNEL_CHANGE,
-    KernelStep: KernelStep.APP_RUNNING
+    KernelStep: KernelStep.APP_READY
 });
 
 export const initializeSession = (): SessionAction => ({
@@ -32,7 +32,10 @@ export const initializeSession = (): SessionAction => ({
 
 // REDUCER ------------------------−------------−------------−------------−------------−------------
 
-const kernelReducer = (state: KernelState = KernelState.default, action: KernelAction): KernelState => {
+const kernelReducer = (
+        state: KernelState = KernelState.default,
+        action: KernelAction): KernelState => {
+
     let newState;
     switch (action.type) {
         case "UPDATE_KERNEL_CHANGE":
@@ -48,7 +51,10 @@ const kernelReducer = (state: KernelState = KernelState.default, action: KernelA
     return newState;
 };
 
-const sessionReducer = (state: SessionState = SessionState.default, action: SessionAction): SessionState => {
+const sessionReducer = (
+        state: SessionState = SessionState.default,
+        action: SessionAction): SessionState => {
+
     let newState;
     switch (action.type) {
         case "INITIALIZE_SESSION":

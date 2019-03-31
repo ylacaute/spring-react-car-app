@@ -20,14 +20,14 @@ class AppRouteConfig {
 
     home:RouteConfig = {
         path: "/",
-        name: "Home",
+        name: "Accueil",
         component: Home,
-        exact: false,
+        exact: true,
     };
 
     box:RouteConfig = {
         path: "/box",
-        name: "Box",
+        name: "Caisses",
         component: BoxPage,
         exact: false,
     };
@@ -41,7 +41,7 @@ class AppRouteConfig {
 
     about:RouteConfig = {
         path: "/about",
-        name: "About",
+        name: "A propos",
         component: About,
         exact: false,
     };
@@ -62,18 +62,17 @@ class AppRouteConfig {
 
     getAll(): RouteConfig[] {
         return [
+            this.home,
             this.box,
             this.contact,
             this.about,
-            this.demo,
+            //this.demo,
             this.carDetail,
-            this.home,
         ];
     }
 
     getTopMenuRoutes(): RouteConfig[] {
         return this.getAll()
-            .filter(r => r.name != this.home.name)
             .filter(r => r.name != this.carDetail.name);
     }
 

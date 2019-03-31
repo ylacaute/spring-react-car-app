@@ -45,7 +45,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>npm run build</id>
+                        <id>npm run package</id>
                         <goals>
                             <goal>npm</goal>
                         </goals>

@@ -4,9 +4,8 @@ import Card from "core/component/layout/card/Card";
 import {DEFAULT_SCALE, getProductImagePath, ProductModel} from "feature/catalog/model/ProductModel";
 import {PulseLoader} from "halogenium";
 import {ProductLink} from "./ProductLink";
-import Icon from "../../../core/component/image/icon";
 import "./ProductCard.scss";
-import {Link} from "react-router-dom";
+import {BoxLinkBadge} from "./BoxLinkBadge";
 
 interface Props {
     className?: string;
@@ -17,10 +16,9 @@ class ProductCard extends React.Component<Props> {
 
     render() {
         const {className, product} = this.props;
-        const {brand, name} = this.props.product;
+        const {brand, name, box} = this.props.product;
         const scale = this.props.product.scale ? this.props.product.scale : DEFAULT_SCALE;
         const imgPath = getProductImagePath(product, "featured");
-        const boxNumber = product.box.replace("CAISSE ", "");
 
         return (
             <Card className={`product ${className}`} >
@@ -35,12 +33,9 @@ class ProductCard extends React.Component<Props> {
                         <h3 className="product-brand">{brand} - {scale}</h3>
                     </div>
                     <footer>
-                        <Icon name="box"/>
-                        <Link to="#">
-                            <span>Caisse {boxNumber}</span>
-                        </Link>
+                        <BoxLinkBadge brand={brand} box={box} />
                         <ProductLink product={product}>
-                            Voir le détail
+                            Détail
                         </ProductLink>
                     </footer>
                 </div>

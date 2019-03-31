@@ -22,14 +22,14 @@ export interface CatalogFilterOption {
  * Return true is the product must appears
  */
 export const applyFilter = (product: ProductModel, filter: CatalogFilterModel) => {
-    let result = false;
+    let result = true;
 
     if (filter.options.length === 0) {
         result = true;
     }
     for (const option of filter.options) {
-        if (product.normalizedForResearch.includes(option.value)) {
-            result = true;
+        if (!product.normalizedForResearch.includes(option.value)) {
+            result = false;
             break;
         }
     }
@@ -50,14 +50,41 @@ export const createFilterFromURL = (): CatalogFilterModel => {
     return {
         options: new URLSearchParams(queryParams)
             .get("filter")
-            .split("-")
+            .split(",")
             .map(item => {
                 return {
-                    label: item,
-                    value: item
+                    label: item.toUpperCase(),
+                    value: item.toLowerCase()
                 }
             })
     };
+};
+
+
+export const createFilterBox = (brand: string, box: string): CatalogFilterModel => {
+    return {
+        options: [{
+            label: brand,
+            value: brand
+        }, {
+            label: box,
+            value: box
+        }]
+    }
+};
+
+
+export const filterEquals = (filter1: CatalogFilterModel, filter2: CatalogFilterModel): boolean => {
+    if (filter1.options.length != filter2.options.length) {
+        return false;
+    }
+    for (let i = 0; i < filter1.options.length; i++) {
+        if (filter1.options[i].value != filter2.options[i].value) {
+            return false;
+        }
+    }
+    console.log("YES EQUALS");
+    return true;
 };
 
 
@@ -67,7 +94,7 @@ export const createFilterFromURL = (): CatalogFilterModel => {
 export const serializeFilter = (filter) => {
     return filter.options
         .map(opt => opt.value)
-        .join("-");
+        .join(",");
 };
 
 /**
@@ -75,7 +102,7 @@ export const serializeFilter = (filter) => {
  */
 const normalizeOptionValue = (option: CatalogFilterOption): CatalogFilterOption => {
     return {
-        label: option.label,
+        label: option.label.toUpperCase(),
         value: normalizeStr(option.value).toLowerCase()
     };
 };

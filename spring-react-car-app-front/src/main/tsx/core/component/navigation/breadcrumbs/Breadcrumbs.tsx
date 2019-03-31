@@ -39,7 +39,7 @@ function getBreadcrumbs({ appRouteConfig, match, location }) {
     return pathTokens.map((path, i) => {
         const routeMatch = getRouteMatch(appRouteConfig.getRouteConfigs(), path);
         const routeValue = routeMatch.route.name;
-        // const name = isFunction(routeValue)
+        // const num = isFunction(routeValue)
         //     ? routeValue(routeMatch.params)
         //     : routeValue;
         const name = routeValue;
@@ -52,11 +52,11 @@ function Breadcrumbs({ match, location }) {
     // const renderItem = (breadcrumb, i) => (
     //     <span key={i}>
     //         {i === breadcrumbs.length - 1 && (
-    //             <label className="breadcrumbs-item">{breadcrumb.name}</label>
+    //             <label className="breadcrumbs-item">{breadcrumb.num}</label>
     //         )}
     //         {i < breadcrumbs.length - 1 && (
     //             <Link className="breadcrumbs-item" to={breadcrumb.path}>
-    //                 {breadcrumb.name}
+    //                 {breadcrumb.num}
     //             </Link>
     //         )}
     //         {i < breadcrumbs.length - 1 && (

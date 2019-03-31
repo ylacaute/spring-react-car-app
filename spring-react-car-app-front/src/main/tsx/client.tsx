@@ -4,7 +4,7 @@ import {Provider as ReduxProvider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import App from "core/component/App";
 import AppState, {createDefaultState} from "core/state/AppState";
-import createStore, {documentLoaded} from "core/store";
+import createStore, {applicationReady} from "core/store";
 
 const initialState: AppState = createDefaultState();
 console.log("Initial state created: ", initialState);
@@ -23,7 +23,7 @@ const app = document.getElementById("app");
 
 // To avoid FOUC, we display a blank screen during load
 window.addEventListener("load", () => {
-    store.dispatch(documentLoaded());
+    store.dispatch(applicationReady());
 });
 
 ReactDOM.render(jsx, app);

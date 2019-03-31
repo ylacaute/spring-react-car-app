@@ -6,14 +6,15 @@ import {
     MIN_DISPLAYED_PRODUCTS
 } from "feature/catalog/model/CatalogModel";
 import history from "core/config/HistoryConfig";
-import {filterToURL} from "../model/CatalogFilterModel";
+import {filterEquals, filterToURL} from "../model/CatalogFilterModel";
 
 const updateHistory = (filter) => {
+    let path = "/";
     if (filter.options.length > 0) {
-        history.push(filterToURL(filter));
-    } else {
-        history.push("/");
+        path = filterToURL(filter);
     }
+    history.push(path);
+    console.log("Updating history with " + path);
 };
 
 const catalogReducer = (
@@ -40,7 +41,7 @@ const catalogReducer = (
                 displayedProductsCount: MIN_DISPLAYED_PRODUCTS,
                 filter: action.filter
             };
-            if (action.updateHistory)
+            if (!filterEquals(state.filter, newState.filter) && action.updateHistory)
                 updateHistory(action.filter);
             break;
         default:
