@@ -52,15 +52,18 @@ mvn dockerfile:push
 ```
 
 # Technical backlog
--[x] Add gzip and cache
--[ ] Enable HTTP2
--[ ] A smaller featured must be used in catalog to improve performance 
--[ ] Change image format to JPEG 2000, JPEG XR or WebP
--[ ] As 97% of bootstrap is not used: change include from .min to scss
+- [x] Add gzip and cache
+- [x] Use only fa icon needed from fontawesome
+- [ ] Enable HTTP2 (generate cert with Let's Encrypt)
+- [ ] A smaller featured image must be used in catalog to improve performance 
+- [ ] Change image format to JPEG 2000, JPEG XR or WebP
+- [ ] As 97% of bootstrap is not used: change include from .min to scss
+- [ ] Remove the "micro flash" on image loading
 
 # Functional backlog
--[ ] Contact page
--[ ] About page
--[ ] Site logo and favicon
+- [ ] Keep the same position on scroll when click back on browser
+- [ ] Contact page
+- [ ] About page
+- [ ] Site logo and favicon
 
 
