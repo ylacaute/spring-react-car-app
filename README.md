@@ -7,7 +7,7 @@ __Spring React Car App__ is a personal open source project.
 
 # Demo
 
-Online demo [http://demo.thorpora.fr](http://demo.thorpora.fr)
+Online demo [http://demo.thorpora.fr/carapp/](http://demo.thorpora.fr/carapp/)
 
 
 # Build

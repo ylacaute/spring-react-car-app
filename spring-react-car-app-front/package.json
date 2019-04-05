@@ -9,7 +9,7 @@
     "analyze": "webpack --env.platform=client --env.analyze=true",
     "build": "webpack",
     "prepackage": "npm run clean",
-    "package": "webpack -p",
+    "package": "webpack -p --env.contextPath=/carapp",
     "start": "webpack-dev-server --host 0.0.0.0 --port 3001 --mode development --open",
     "demo": "webpack-dev-server --host 0.0.0.0 --port 3001 --mode development --open --env.externalStatic=demo/static"
   },

@@ -1,13 +1,18 @@
 const path = require("path");
 const chalk = require('chalk');
+const webpack = require('webpack');
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const resolve = (dirName) => path.resolve(__dirname, dirName);
+
 const dispKeys = (msg, object) => Object.keys(object).forEach(key =>
     console.log(chalk.blue(`${msg} '${key}': ${object[key]}`)));
+const getContextPath = (env) => {
+    return (env != null && env.contextPath != null) ? env.contextPath : "";
+};
 
 const Paths = {
     src: resolve("src"),
@@ -24,6 +29,8 @@ const Paths = {
 };
 
 module.exports = function(env) {
+
+    const contextPath = getContextPath(env);
 
     // The external static directory is override for the demo
     if (env && env.externalStatic) {
@@ -49,7 +56,7 @@ module.exports = function(env) {
         },
         output: {
             filename: "[name].bundle.js",
-            publicPath: "/",
+            publicPath: contextPath,
             path: Paths.dist
         },
 
@@ -158,7 +165,11 @@ module.exports = function(env) {
             new MiniCssExtractPlugin({
                 filename: "[name].css",
                 chunkFilename: "[id].css"
-            })
+            }),
+
+            new webpack.DefinePlugin({
+                CONTEXT_PATH: JSON.stringify(contextPath),
+            }),
         ],
 
     };
@@ -180,7 +191,7 @@ module.exports = function(env) {
             contentBase: [Paths.static, Paths.externalStatic],
             // Allow to refresh routed pages
             historyApiFallback: true,
-            publicPath: '/'
+            publicPath: contextPath
         };
     //}
 

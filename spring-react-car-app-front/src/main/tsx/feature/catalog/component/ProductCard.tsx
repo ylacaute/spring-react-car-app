@@ -6,11 +6,13 @@ import {PulseLoader} from "halogenium";
 import {ProductLink} from "./ProductLink";
 import "./ProductCard.scss";
 import {BoxLinkBadge} from "./BoxLinkBadge";
+import {contextPath} from "../../../core/config/AppRouteConfig";
 
 interface Props {
     className?: string;
     product: ProductModel;
 }
+
 
 class ProductCard extends React.Component<Props> {
 
@@ -27,7 +29,7 @@ class ProductCard extends React.Component<Props> {
                         <Image
                             alt={product.model}
                             imagePath={imgPath}
-                            noImagePath="/img/no-image-car.png"
+                            noImagePath={`${contextPath}/img/no-image-car.png`}
                         />
                     </figure>
                 </ProductLink>

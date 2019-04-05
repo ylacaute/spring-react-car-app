@@ -21,6 +21,7 @@ declare module "*.scss" {
 // ALLOW TYPESCRIPT TO ACCEPT GLOBAL COMPILE TIME VARIABLES
 declare var APP_MODE: string;
 
+declare var CONTEXT_PATH: string;
 
 // interface Global {
 //     document: Document;

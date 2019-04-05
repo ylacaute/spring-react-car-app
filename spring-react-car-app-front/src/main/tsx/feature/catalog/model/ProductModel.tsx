@@ -1,7 +1,6 @@
 import {normalizeStr} from "core/util/Toolkit";
 
-export const BASE_PRODUCT_URL = "/cars";
-
+export const BASE_PRODUCT_URL = CONTEXT_PATH + "/cars";
 export const DEFAULT_SCALE = "1/43";
 
 export interface ProductModel {
@@ -61,7 +60,7 @@ export const createProduct = (brand, model, box, scale, nbImg): ProductModel => 
 
 export const toURL = (product: ProductModel): string => {
     const {brand, model, box, scale, nbImg} = product;
-    return `/car?brand=${brand}&model=${model}&box=${box}&scale=${scale}&nbImg=${nbImg}`;
+    return `car?brand=${brand}&model=${model}&box=${box}&scale=${scale}&nbImg=${nbImg}`;
 };
 
 export const fromURL = (location: any): ProductModel => {

@@ -1,8 +1,13 @@
 
 # https://docs.spring.io/spring-boot/docs/2.0.0.RELEASE/reference/html/common-application-properties.html
 
+server:
+  servlet:
+    context-path: /carapp
+
 app:
   static: file:/static
+
 
 # 86400 is one day in seconds
 spring:
@@ -19,7 +24,7 @@ spring:
     chain:
       cache: true
 
-server:
+
   compression:
     enabled: true
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
