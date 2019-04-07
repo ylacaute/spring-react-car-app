@@ -4,11 +4,12 @@ import Catalog from "feature/catalog/component/Catalog";
 import {CatalogModel} from "feature/catalog/model/CatalogModel";
 import React from "react";
 import Helmet from "react-helmet";
-import {applyFilter, CatalogFilterModel, createFilterFromURL} from "feature/catalog/model/CatalogFilterModel";
+import {applyFilter, CatalogFilterModel} from "feature/catalog/model/CatalogFilterModel";
 import CatalogSearchBar from "feature/catalog/component/CatalogSearchBar";
-import "./HomePage.scss";
-import {ProductModel} from "../../../../feature/catalog/model/ProductModel";
+import ToastContainer, {toast} from "core/component/notification/toast";
+import ErrorHandlerPage from "core/component/page/error/ErrorHandlerPage";
 
+import "./HomePage.scss";
 
 /**
  * location, history and match come from React-Router.
@@ -72,7 +73,7 @@ class HomePage extends React.Component<Props> {
             .slice(0, displayedProductsCount);
 
         return (
-            <>
+            <ErrorHandlerPage match={match} location={location}>
                 <Helmet>
                     <title>Voitures miniatures</title>
                     <meta name="description" content="Rechercher des voitures miniature par model, marque, échelle, nom, etc." />
@@ -88,10 +89,11 @@ class HomePage extends React.Component<Props> {
                         {this.renderFilterInfo(productFiltered.length, catalog.products.length)}
                     </div>
                 </Header>
+                <ToastContainer />
                 <article>
                     <Catalog products={productsToDisplay}/>
                 </article>
-            </>
+            </ErrorHandlerPage>
        );
     }
 }

@@ -3,8 +3,11 @@
 @import "sass/core/effect/zoom.scss";
 @import "sass/core/effect/shadow.scss";
 
+
 :root {
+  // COLOR
   --main-bg-color: #fafafa;
+  --badge-bg-color: #6c757d;
   --link-color: #333;
   --link-hover-color: #A60006;
   --top-menu-bg-color: var(--main-bg-color);
@@ -13,6 +16,14 @@
   --top-menu-toggler-color: var(--top-menu-link-color);
   --page-header-color: var(--main-bg-color);
   --base-header-content-height: 12rem;
+  --toast-info: var(--badge-bg-color);
+  --toast-success: blue;
+  --toast-warning: green;
+  --toast-error: var(--link-hover-color);
+
+  // BORDERS
+  --car-border-radius: 6px 6px 0 0;
+  --toast-border-radius: 0px;
 }
 
 // Zoom on product image hover

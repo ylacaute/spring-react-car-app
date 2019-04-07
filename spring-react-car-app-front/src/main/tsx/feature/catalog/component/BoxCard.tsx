@@ -6,7 +6,7 @@ import {BoxModel} from "../model/BoxModel";
 import {BoxLinkBadge} from "./BoxLinkBadge";
 import {BoxLink} from "./BoxLink";
 import "./BoxCard.scss";
-import {contextPath} from "../../../core/config/AppRouteConfig";
+import {getContextPath} from "../../../core/config/AppRouteConfig";
 
 interface Props {
     className?: string;
@@ -28,13 +28,13 @@ class BoxCard extends React.Component<Props> {
             }]
         };
 
-        const img = `${contextPath}/img/box/box_${box.brand.toLowerCase()}.png`;
+        const img = `${getContextPath()}/img/box/box_${box.brand.toLowerCase()}.png`;
 
         return (
             <Card className={`box ${className}`} >
                 <BoxLink brand={box.brand} box={box.num}>
                     <figure className="product-thumb-image">
-                        <Image imagePath={img} noImagePath={`${contextPath}/img/no-image-car.png`} />
+                        <Image imagePath={img} noImagePath={`${getContextPath()}/img/no-image-car.png`} />
                     </figure>
                 </BoxLink>
                 <div className="box-content">

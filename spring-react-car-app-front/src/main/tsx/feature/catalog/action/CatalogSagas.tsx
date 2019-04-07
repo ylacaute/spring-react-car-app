@@ -5,14 +5,14 @@ import {
     fetchCatalogFailed,
     fetchCatalogSuccess,
     fetchMoreProductsSuccess
-} from "feature/catalog/action/CatalogAction";
-
+} from "./CatalogAction";
+import {REQUEST, SUCCESS, FAILURE} from "core/util/ActionType";
 import {CatalogModel} from "feature/catalog/model/CatalogModel";
 
 
-function* fetchUser(action) {
+function* fetchCatalog(action) {
     try {
-        const catalog: CatalogModel = yield call(fetchProducts); // args possible : ex , action.payload.userId
+        const catalog: CatalogModel = yield call(fetchProducts);
         yield put(fetchCatalogSuccess(catalog));
 
     } catch (e) {
@@ -28,19 +28,16 @@ function* fetchMore(action) {
     }
 }
 
-
-
-
 function* watchCatalogFetch() {
-    yield takeLatest(CatalogActionType.CATALOG_FETCH_REQUESTED, fetchUser);
+    yield takeLatest(REQUEST(CatalogActionType.CATALOG_FETCH), fetchCatalog);
 }
 
 function* watchCatalogFetchMore() {
-    yield takeLatest(CatalogActionType.CATALOG_FETCH_MORE_REQUESTED, fetchMore);
+    yield takeLatest(REQUEST(CatalogActionType.CATALOG_FETCH_MORE), fetchMore);
 }
 
 
-export default function* watchCatalogActions() {
+export function* watchCatalogActions() {
     yield all([
         fork(watchCatalogFetchMore),
         fork(watchCatalogFetch),

@@ -1,6 +1,6 @@
 import {normalizeStr} from "core/util/Toolkit";
+import {getContextPath} from "core/config/AppRouteConfig";
 
-export const BASE_PRODUCT_URL = CONTEXT_PATH + "/cars";
 export const DEFAULT_SCALE = "1/43";
 
 export interface ProductModel {
@@ -75,5 +75,5 @@ export const fromURL = (location: any): ProductModel => {
 
 export const getProductImagePath = (product: ProductModel, type: any): string => {
     const {box, brand, model} = product;
-    return `${BASE_PRODUCT_URL}/${brand}/${box}/${model}/${type}.jpg`;
+    return `${getContextPath()}/cars/${brand}/${box}/${model}/${type}.jpg`;
 };

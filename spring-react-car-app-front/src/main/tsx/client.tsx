@@ -5,7 +5,7 @@ import {BrowserRouter} from "react-router-dom";
 import App from "core/component/App";
 import AppState, {createDefaultState} from "core/state/AppState";
 import createStore, {applicationReady} from "core/store";
-import {contextPath} from "./core/config/AppRouteConfig";
+import {getContextPath} from "./core/config/AppRouteConfig";
 
 const initialState: AppState = createDefaultState();
 console.log("Initial state created: ", initialState);
@@ -15,7 +15,7 @@ console.log("Redux store created");
 
 const jsx = (
     <ReduxProvider store={store}>
-        <BrowserRouter basename={contextPath}>
+        <BrowserRouter basename={getContextPath()}>
             <App />
         </BrowserRouter>
     </ReduxProvider>

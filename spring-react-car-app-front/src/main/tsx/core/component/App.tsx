@@ -4,7 +4,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {Route, Switch, withRouter} from "react-router-dom";
 import {CatalogFilterModel, createFilterFromURL} from "../../feature/catalog/model/CatalogFilterModel";
-import {changeFilter} from "../../feature/catalog/action/CatalogAction";
+import {changeFilter} from "feature/catalog/action/CatalogAction";
 import "./App.scss";
 
 interface Props {
@@ -26,7 +26,7 @@ class App extends React.Component<Props, State> {
     constructor(props: Props, state: State) {
         super(props, state);
         this.state = {
-            title: "Welcome to React SSR!",
+            title: "Mes petites voitures",
         };
 
         // On back button, we need to update the filter state, but without pushing a new history entry in browser.

@@ -1,6 +1,7 @@
 import Header from "core/component/layout/header";
 import React from "react";
 import Helmet from "react-helmet";
+import ErrorHandlerPage from "core/component/page/error/ErrorHandlerPage";
 
 interface Props {
     match: any;
@@ -11,10 +12,10 @@ class ContactPage extends React.Component<Props> {
     render() {
         const {match, location} = this.props;
         return (
-            <>
+            <ErrorHandlerPage match={match} location={location}>
                 <Helmet>
                     <title>Contact Page</title>
-                    <meta name="description" content="This is a proof of concept for React SSR" />
+                    <meta name="description" content="contact page" />
                 </Helmet>
                 <Header location={location} match={match}>
                     <h2>This is the contact page</h2>
@@ -25,7 +26,7 @@ class ContactPage extends React.Component<Props> {
                 <footer>
                     TODO
                 </footer>
-            </>
+            </ErrorHandlerPage>
         );
     }
 }

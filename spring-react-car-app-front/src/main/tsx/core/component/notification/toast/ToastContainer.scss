@@ -1,0 +1,39 @@
+
+$rt-namespace: 'Toastify';
+$rt-toast-width: 100% !default;
+$rt-toast-background: #ffffff !default;
+$rt-toast-min-height: 64px !default;
+$rt-toast-max-height: 800px !default;
+
+$rt-color-default: #fff !default;
+$rt-color-info: var(--toast-info);
+$rt-color-success: var(--toast-success);
+$rt-color-warning: var(--toast-warning);
+$rt-color-error: var(--toast-error);
+
+$rt-text-color-default: #aaa !default;
+
+$rt-color-progress-default: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55) !default;
+
+$rt-mobile: "only screen and (max-width : 480px)" !default;
+$rt-font-family: sans-serif !default;
+$rt-z-index: 9999 !default;
+
+@import "~react-toastify/scss/_toastContainer.scss";
+@import "~react-toastify/scss/_toast.scss";
+@import "~react-toastify/scss/_closeButton.scss";
+@import "~react-toastify/scss/_progressBar.scss";
+@import "~react-toastify/scss/animations/_bounce.scss";
+
+.Toastify__toast {
+  border-radius: var(--toast-border-radius);
+}
+
+.Toastify__toast-container {
+  padding: 0;
+}
+.Toastify__toast-container--top-center {
+  top: 0;
+  left: 0;
+  margin-left: 0;
+}

@@ -4,6 +4,7 @@ import {fromURL, getProductImagePath, ProductModel} from "feature/catalog/model/
 import React from "react";
 import Helmet from "react-helmet";
 import {ImageCarouselSlide, ImageCarousel} from "core/component/image/carousel";
+import ErrorHandlerPage from "core/component/page/error/ErrorHandlerPage";
 import "./CarDetailPage.scss";
 
 // location and match properties come from React-Router
@@ -26,6 +27,7 @@ class CarDetailPage extends React.Component<Props, State> {
             carouselLoaded: false
         };
         this.handleFirstImageLoaded = this.handleFirstImageLoaded.bind(this);
+        console.log("CarDetailPage:constructor");
     }
 
     private handleFirstImageLoaded() {
@@ -37,7 +39,12 @@ class CarDetailPage extends React.Component<Props, State> {
         });
     }
 
+    componentDidMount() {
+        console.log("CarDetailPage:componentDidMount");
+    }
+
     render() {
+        console.log("CarDetailPage:render");
         const {match, location} = this.props;
         const {brand, name, scale, nbImg} = this.state.product;
         const {carouselLoaded, product} = this.state;
@@ -53,7 +60,7 @@ class CarDetailPage extends React.Component<Props, State> {
             });
         }
         return (
-            <>
+            <ErrorHandlerPage match={match} location={location}>
                 <Helmet>
                     <title>product Page</title>
                     <meta name="description" content="..." />
@@ -66,7 +73,7 @@ class CarDetailPage extends React.Component<Props, State> {
                         <ImageCarousel slides={slides} onLoad={this.handleFirstImageLoaded}/>
                     </Card>
                 </article>
-            </>
+            </ErrorHandlerPage>
         );
     }
 }

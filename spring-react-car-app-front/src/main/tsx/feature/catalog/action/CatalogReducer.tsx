@@ -1,4 +1,4 @@
-import CatalogAction, {CatalogActionType} from "feature/catalog/action/CatalogAction";
+import {CatalogAction, CatalogActionType} from "./CatalogAction";
 import {
     CatalogModel,
     createDefaultCatalog,
@@ -7,6 +7,8 @@ import {
 } from "feature/catalog/model/CatalogModel";
 import history from "core/config/HistoryConfig";
 import {filterEquals, filterToURL} from "../model/CatalogFilterModel";
+import {REQUEST, SUCCESS, FAILURE} from "core/util/ActionType";
+import {toast} from "core/component/notification/toast";
 
 const updateHistory = (filter) => {
     let path = "/";
@@ -23,19 +25,25 @@ const catalogReducer = (
 
     let newState;
     switch (action.type) {
-        case CatalogActionType.CATALOG_FETCH_SUCCEEDED:
+        case SUCCESS(CatalogActionType.CATALOG_FETCH):
             newState = {
                 ...state,
                 ...action.catalog
             };
             break;
-        case CatalogActionType.CATALOG_FETCH_MORE_SUCCEEDED:
+        case FAILURE(CatalogActionType.CATALOG_FETCH):
+            toast.error("Unable to fetch catalog.yml");
+            break;
+        case SUCCESS(CatalogActionType.CATALOG_FETCH_MORE):
             newState = {
                 ...state,
                 displayedProductsCount: state.displayedProductsCount + INC_DISPLAYED_PRODUCTS
             };
             break;
-        case CatalogActionType.CATALOG_CHANGE_FILTER:
+        case FAILURE(CatalogActionType.CATALOG_FETCH_MORE):
+            toast.error("Unable to fetch more products.");
+            break;
+        case REQUEST(CatalogActionType.CATALOG_CHANGE_FILTER):
             newState = {
                 ...state,
                 displayedProductsCount: MIN_DISPLAYED_PRODUCTS,

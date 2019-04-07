@@ -1,19 +1,15 @@
 import {CatalogModel} from "feature/catalog/model/CatalogModel";
 import {CatalogFilterModel, normalizeFilter} from "feature/catalog/model/CatalogFilterModel";
-
-// ACTION DESIGN
+import {REQUEST, SUCCESS, FAILURE} from "core/util/ActionType";
 
 export enum CatalogActionType {
-    CATALOG_FETCH_REQUESTED = "CATALOG_FETCH_REQUESTED",
-    CATALOG_FETCH_MORE_REQUESTED = "CATALOG_FETCH_MORE_REQUESTED",
-    CATALOG_FETCH_MORE_SUCCEEDED = "CATALOG_FETCH_MORE_SUCCEEDED",
-    CATALOG_FETCH_SUCCEEDED = "CATALOG_FETCH_SUCCEEDED",
-    CATALOG_FETCH_FAILED = "CATALOG_FETCH_FAILED",
+    CATALOG_FETCH = "CATALOG_FETCH",
+    CATALOG_FETCH_MORE = "CATALOG_FETCH_MORE",
     CATALOG_CHANGE_FILTER = "CATALOG_CHANGE_FILTER"
 }
 
-export default interface CatalogAction {
-    type: CatalogActionType;
+export interface CatalogAction {
+    type: string;
     catalog?: CatalogModel;
     message?: string;
     filter?: CatalogFilterModel;
@@ -24,29 +20,29 @@ export default interface CatalogAction {
 // ACTION CREATORS
 
 export const fetchCatalog = (): CatalogAction => ({
-    type: CatalogActionType.CATALOG_FETCH_REQUESTED
+    type: REQUEST(CatalogActionType.CATALOG_FETCH)
 });
 
 export const fetchCatalogSuccess = (catalog: CatalogModel): CatalogAction => ({
-    type: CatalogActionType.CATALOG_FETCH_SUCCEEDED,
+    type: SUCCESS(CatalogActionType.CATALOG_FETCH),
     catalog
 });
 
 export const fetchCatalogFailed = (message: string): CatalogAction => ({
-    type: CatalogActionType.CATALOG_FETCH_FAILED,
+    type: FAILURE(CatalogActionType.CATALOG_FETCH),
     message
 });
 
 export const fetchMoreProducts = (): CatalogAction => ({
-    type: CatalogActionType.CATALOG_FETCH_MORE_REQUESTED
+    type: REQUEST(CatalogActionType.CATALOG_FETCH_MORE)
 });
 
 export const fetchMoreProductsSuccess = (): CatalogAction => ({
-    type: CatalogActionType.CATALOG_FETCH_MORE_SUCCEEDED
+    type: SUCCESS(CatalogActionType.CATALOG_FETCH_MORE)
 });
 
 export const changeFilter = (filter: CatalogFilterModel, pushHistory = false): CatalogAction => ({
-    type: CatalogActionType.CATALOG_CHANGE_FILTER,
+    type: REQUEST(CatalogActionType.CATALOG_CHANGE_FILTER),
     filter: normalizeFilter(filter),
     updateHistory: pushHistory
 });

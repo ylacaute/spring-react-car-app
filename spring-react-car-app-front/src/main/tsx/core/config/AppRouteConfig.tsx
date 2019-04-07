@@ -9,8 +9,17 @@ import BoxPage from "../component/page/box";
 // Nice explanation of navigation with react-route-v4 :
 //   https://stackoverflow.com/questions/31079081/programmatically-navigate-using-react-router
 
-export const contextPath = CONTEXT_PATH;
-console.log("contextPath : '" + contextPath + "'");
+export const getContextPath = (): string => {
+    let ctx = "" + CONTEXT_PATH;
+    console.log("getContextPath : " + ctx);
+    if (ctx.endsWith("/")) {
+        return ctx.substring(0, ctx.length - 1);
+    }
+    return ctx;
+};
+
+//export const contextPath = CONTEXT_PATH;
+console.log("contextPath : '" + getContextPath() + "'");
 
 export interface RouteConfig {
     path: string;

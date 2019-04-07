@@ -1,5 +1,5 @@
 import LoggerMiddleWare from "core/middleware/LoggerMiddleWare";
-import CatalogSagas from "feature/catalog/action/CatalogSagas";
+import {watchCatalogActions} from "feature/catalog/action/CatalogSagas";
 import catalogReducer from "feature/catalog/action/CatalogReducer";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import createSagaMiddleware from "redux-saga";
@@ -86,7 +86,7 @@ export default (initialState: AppState) => {
             sagaMiddleware,
             LoggerMiddleWare,
             ));
-    sagaMiddleware.run(CatalogSagas);
+    sagaMiddleware.run(watchCatalogActions);
     return store;
 };
 

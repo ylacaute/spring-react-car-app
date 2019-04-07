@@ -2,6 +2,7 @@ import Header from "core/component/layout/header";
 import React from "react";
 import Helmet from "react-helmet";
 import {Button} from "reactstrap";
+import ErrorHandlerPage from "core/component/page/error/ErrorHandlerPage";
 
 interface Props {
     match: any;
@@ -12,10 +13,10 @@ class DemoPage extends React.Component<Props> {
     render() {
         const {match, location} = this.props;
         return (
-            <>
+            <ErrorHandlerPage match={match} location={location}>
                 <Helmet>
                     <title>About Page</title>
-                    <meta name="description" content="This is a proof of concept for React SSR" />
+                    <meta name="description" content="html demo page" />
                 </Helmet>
                 <Header location={location} match={match}>
                     <h2>This is the about page</h2>
@@ -490,7 +491,7 @@ class DemoPage extends React.Component<Props> {
                             href="http://github.com/cbracco/html5-test-page">GitHub</a>.</p>
                     </footer>
                 </div>
-            </>
+            </ErrorHandlerPage>
         );
     }
 }

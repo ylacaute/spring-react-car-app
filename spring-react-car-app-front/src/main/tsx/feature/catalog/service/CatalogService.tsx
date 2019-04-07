@@ -1,8 +1,9 @@
 import {CatalogModel} from "feature/catalog/model/CatalogModel";
-import {ProductModel, SCALES, createProduct, DEFAULT_SCALE, BASE_PRODUCT_URL} from "feature/catalog/model/ProductModel";
+import {ProductModel, SCALES, createProduct, DEFAULT_SCALE} from "feature/catalog/model/ProductModel";
 import fetch from "isomorphic-fetch";
 import * as YAML from "js-yaml";
 import {BoxModel} from "../model/BoxModel";
+import {getContextPath} from "../../../core/config/AppRouteConfig";
 
 const fetchLogger = (responseText: string) => {
     //console.log("HTTP Response text: ", responseText);
@@ -30,8 +31,6 @@ const normalizeProduct = (product: ProductModel): ProductModel => {
 const getBoxId = (product: ProductModel): string => {
     return product.brand.toUpperCase() + "-" + product.box;
 };
-
-
 
 const createBoxes = (catalog: CatalogModel): BoxModel[] => {
     let boxMap = new Map<string, BoxModel>();
@@ -65,7 +64,7 @@ const logCatalog = (catalog: CatalogModel): CatalogModel => {
 };
 
 export function fetchProducts(): Promise<CatalogModel> {
-    return fetch(BASE_PRODUCT_URL + "/catalog.yml")
+    return fetch(getContextPath() + "cars/catalog.yml")
         .then((res: Response) => res.text())
         .then(fetchLogger)
         .then((res: string) => YAML.load(res) as CatalogModel)
