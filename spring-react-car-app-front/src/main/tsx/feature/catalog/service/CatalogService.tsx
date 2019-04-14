@@ -64,7 +64,7 @@ const logCatalog = (catalog: CatalogModel): CatalogModel => {
 };
 
 export function fetchProducts(): Promise<CatalogModel> {
-    return fetch(getContextPath() + "cars/catalog.yml")
+    return fetch(getContextPath() + "/cars/catalog.yml")
         .then((res: Response) => res.text())
         .then(fetchLogger)
         .then((res: string) => YAML.load(res) as CatalogModel)

@@ -70,3 +70,5 @@ mvn dockerfile:push
 - [ ] Many things...
 
 
+# Auto ref sites
+- https://www.autos-minis.com/

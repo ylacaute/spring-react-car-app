@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -100,44 +101,40 @@ public class Application {
 
 	// Return image count
 	private static long processImages(Path file) throws IOException {
-		List<File> images = Arrays.stream(file.toFile().listFiles()).sorted().collect(Collectors.toList());
+		List<File> images;
+		try (DirectoryStream<Path> ds = Files.newDirectoryStream(file)) {
+			images = StreamSupport.stream(ds.spliterator(), false)
+					.filter(Application::isFileNotExcluded)
+					.filter(Application::isExtJpg)
+					.map(Path::toFile)
+					.collect(Collectors.toList());
+		}
+		//List<File> images = Arrays.stream(file.toFile().listFiles()).sorted().collect(Collectors.toList());
 		for (int i = 0; i < images.size(); i++) {
 			Path currentImgPath = images.get(i).toPath();
 
-			if (images.get(i).toPath().getFileName().toString().equals("info.jpg") ){
-				out.println("    info.jpg exist, skip. ");
-				continue;
+			if (!images.get(i).toPath().getFileName().toString().startsWith("IMG")) {
+				out.println("    This directory contains already renamed images, skip. ");
+				break;
 			}
-			if (images.get(i).toPath().getFileName().toString().equals("featured.jpg") ){
-				out.println("    featured.jpg exist, skip. ");
-				continue;
+			if (i == 0) {
+				renameFile(currentImgPath, currentImgPath.resolveSibling("info.jpg"));
+			} else if (i == 1) {
+				renameFile(currentImgPath, currentImgPath.resolveSibling("featured.jpg"));
+			} else {
+				renameFile(currentImgPath, currentImgPath.resolveSibling((i-1) + ".jpg"));
 			}
-			out.println("    Renaming " + currentImgPath.getFileName() + " to " + (i+1) + ".jpg");
-			if (renameImages) {
-				Files.move(currentImgPath, currentImgPath.resolveSibling((i+1) + ".jpg"));
-			}
-
-//			if (i == 0) {
-//				out.println("    Renaming " + currentImgPath.getFileName() + " to info.jpg");
-//				//Files.move(currentImgPath, currentImgPath.resolveSibling("info.jpg"));
-//			} else if (i != images.size() - 1) {
-//				out.println("    Renaming " + currentImgPath.getFileName() + " to " + (i+1) + ".jpg");
-//			}
-			//out.println("    Renaming " + currentImgPath.getFileName() + " to " + (i+1) + ".jpg");
-
-
 		}
+		return images.size();
+	}
 
-		// Rename images
-
-
-		try (DirectoryStream<Path> ds = Files.newDirectoryStream(file)) {
-			return StreamSupport.stream(ds.spliterator(), false)
-					.filter(Application::isFileNotExcluded)
-					.filter(Application::isExtJpg)
-					.count();
+	private static void renameFile(Path currentImgPath, Path newImgPath) throws IOException {
+		out.println("    Renaming " + currentImgPath + " to " + newImgPath);
+		if (renameImages) {
+			Files.move(currentImgPath, newImgPath);
 		}
 	}
+
 
 	private static boolean isFileNotExcluded(Path f) {
 		return !excludedDir.contains(f.getFileName().toString()) && f.toFile().isFile();

@@ -11,7 +11,6 @@ import BoxPage from "../component/page/box";
 
 export const getContextPath = (): string => {
     let ctx = "" + CONTEXT_PATH;
-    console.log("getContextPath : " + ctx);
     if (ctx.endsWith("/")) {
         return ctx.substring(0, ctx.length - 1);
     }

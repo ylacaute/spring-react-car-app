@@ -40,7 +40,7 @@ export const createProduct = (brand, model, box, scale, nbImg): ProductModel => 
     const modelScale = " (" + scale.replace("/", "-") + ")";
     const name = model.replace(modelScale, "");
 
-    if (parseInt(box) < 2) {
+    if (parseInt(box) < 10) {
         box = "0" + parseInt(box);
     }
     return {
